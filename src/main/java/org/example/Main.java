@@ -12,14 +12,18 @@ import java.io.*;
 import java.util.Locale;
 
 public class Main {
+
+    // todo: At new lines the speaking pauses, try finding out why and hopefully fix it
     public static void main(String[] args) throws IOException {
-        int index = 0;
-
        String text = getText(new File("C:/Users/ompan/Text2Speech/src/main/java/org/example/Best Ways To Find Internships.pdf"));
-       //sets freetts.voices as a key to  the path containing the voices in the KevinVoiceDirectory
-       System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
-       String [] words = text.split("\n");
+       sayPdfText(text);
+    }
 
+    static void sayPdfText(String text){
+        int index = 0; //used when splitting the text into an array
+        //sets freetts.voices as a key to  the path containing the voices in the KevinVoiceDirectory
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
+        String [] words = text.split("\n");
         try {
             Central.registerEngineCentral("com.sun.speech.freetts.jsapi.FreeTTSEngineCentral");
             javax.speech.synthesis.Synthesizer synthesizer = Central.createSynthesizer(new SynthesizerModeDesc(Locale.US));
@@ -34,9 +38,7 @@ public class Main {
         } catch (EngineException | AudioException | InterruptedException e) {
             System.out.println("An error occured...");
         }
-
     }
-
 
     static String getText(File pdfFile) throws IOException {
         PDDocument pdf = Loader.loadPDF(pdfFile); //load contents of pdf into empty pdf
