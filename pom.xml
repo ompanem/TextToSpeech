@@ -28,6 +28,13 @@
             <version>3.0.3</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.codehaus.groovy.modules.scriptom/scriptom-sapi-tlb -->
+        <dependency>
+            <groupId>org.codehaus.groovy.modules.scriptom</groupId>
+            <artifactId>scriptom-sapi-tlb</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+
 
 
     </dependencies>
